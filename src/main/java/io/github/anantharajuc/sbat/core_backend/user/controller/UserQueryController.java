@@ -2,6 +2,7 @@ package io.github.anantharajuc.sbat.core_backend.user.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.LinkedMultiValueMap;
@@ -35,7 +36,7 @@ public class UserQueryController
 	@Autowired
 	private UserQueryServiceImpl userQueryServiceImpl;
 	
-	@GetMapping(value=ResourcePaths.USERNAME)
+	@GetMapping(value=ResourcePaths.USERNAME,produces = MediaType.TEXT_HTML_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@PreAuthorize("#username == authentication.principal.username")
 	@ApiOperation(httpMethod="GET", value = "Find user by Username", notes = "Returns a user for the given username",response = User.class)
